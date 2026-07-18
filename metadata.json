@@ -1,0 +1,6 @@
+{
+  "name": "VoyageAI",
+  "description": "Modern AI-powered travel planning web application to plan, visualize, and share customized trip itineraries.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
