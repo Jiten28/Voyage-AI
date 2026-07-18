@@ -306,7 +306,7 @@ app.post("/api/generate-poster", async (req, res) => {
         success: true,
         imageUrl: fallbackUrl,
         isAiGenerated: false,
-        message: "Using hand-curated high resolution cover art (AI image generation requires a paid API key and direct service access)."
+        message: "Preview image shown. AI-generated destination artwork will automatically appear when an image generation model or API is configured."
       });
     }
   } catch (error: any) {
@@ -316,7 +316,7 @@ app.post("/api/generate-poster", async (req, res) => {
       success: true,
       imageUrl: fallbackUrl,
       isAiGenerated: false,
-      message: "Using hand-curated high resolution cover art."
+      message: "Preview image shown. AI-generated destination artwork will automatically appear when an image generation model or API is configured."
     });
   }
 });
