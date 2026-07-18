@@ -25,6 +25,9 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { TripPlan, TripSearchParams } from "../types";
+import { formatCurrency, parseAmount } from "../utils";
+import CurrencyConverter, { currencies } from "./CurrencyConverter";
+import BudgetChart from "./BudgetChart";
 
 interface TripResultsProps {
   plan: TripPlan;
@@ -38,6 +41,12 @@ export default function TripResults({ plan, searchParams, onReset }: TripResults
   const [posterMessage, setPosterMessage] = useState<string>("");
   const [activeDay, setActiveDay] = useState<number>(1);
   const [shareToast, setShareToast] = useState<boolean>(false);
+  const [currency, setCurrency] = useState({ code: plan.budget.currency, symbol: plan.budget.currency === "INR" ? "₹" : "$", rate: currencies.find(c => c.code === plan.budget.currency)?.rate || 1 });
+  const originalCurrencyData = currencies.find(c => c.code === plan.budget.currency) || currencies[0];
+  const effectiveRate = currency.rate / originalCurrencyData.rate;
+
+  // Parse total cost
+  const totalCost = parseFloat(plan.budget.totalEstimatedCost.replace(/[^0-9.-]+/g, ""));
 
   // Trigger travel poster generation on load
   useEffect(() => {
@@ -342,7 +351,7 @@ export default function TripResults({ plan, searchParams, onReset }: TripResults
             <div className="space-y-2">
               <p className="text-xs uppercase tracking-wider text-blue-100 font-semibold">Total Cost Projection</p>
               <h3 className="text-4xl font-light tracking-tight serif italic text-white">
-                {plan.budget.totalEstimatedCost} <span className="text-xs uppercase tracking-wider font-sans font-medium text-blue-200">{plan.budget.currency}</span>
+                {(totalCost * effectiveRate).toLocaleString()} <span className="text-xs uppercase tracking-wider font-sans font-medium text-blue-200">{currency.code}</span>
               </h3>
             </div>
             <div className="pt-8 border-t border-white/10 text-xs text-blue-100">
@@ -358,7 +367,9 @@ export default function TripResults({ plan, searchParams, onReset }: TripResults
                 <div key={idx} className="space-y-1.5">
                   <div className="flex justify-between items-center text-sm font-semibold">
                     <span className="text-slate-700 dark:text-slate-300">{cat.category}</span>
-                    <span className="text-slate-900 dark:text-white font-bold">{cat.amount} ({cat.percentage}%)</span>
+                    <span className="text-slate-900 dark:text-white font-bold">
+                      {formatCurrency(parseAmount(cat.amount) * effectiveRate, currency)} ({cat.percentage}%)
+                    </span>
                   </div>
                   {/* Visual percentage bar */}
                   <div className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
@@ -373,6 +384,21 @@ export default function TripResults({ plan, searchParams, onReset }: TripResults
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
+          <CurrencyConverter 
+            originalTotal={totalCost} 
+            originalCurrency={plan.budget.currency} 
+            onCurrencyChange={setCurrency}
+          />
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 shadow-sm">
+            <h3 className="text-lg font-light text-blue-950 dark:text-blue-200 serif mb-4">Budget Distribution</h3>
+            <BudgetChart 
+              categories={plan.budget.categories} 
+              multiplier={effectiveRate} 
+              symbol={currency.symbol} 
+            />
           </div>
         </div>
       </div>
