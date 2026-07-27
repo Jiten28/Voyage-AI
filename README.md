@@ -94,25 +94,30 @@ Interactive Dashboard
 
 ## Home Page
 
-> *(Add homepage screenshot here)*
+<img width="1288" height="805" alt="image" src="https://github.com/user-attachments/assets/458725bf-9c17-40f2-9dd3-fcfb16b697c3" />
+
 
 ---
 
 ## AI Trip Planner
 
-> *(Add itinerary generation screenshot)*
+<img width="711" height="835" alt="image" src="https://github.com/user-attachments/assets/c5a6e46a-306a-4487-8bd0-74c4c2c0bd2b" />
+<img width="1118" height="693" alt="image" src="https://github.com/user-attachments/assets/43411565-eb98-4c42-8624-8821d202ce2c" />
 
 ---
 
 ## Budget & Hotels
 
-> *(Add recommendation screenshot)*
+<img width="1122" height="815" alt="image" src="https://github.com/user-attachments/assets/89648fe8-920f-4985-916d-fc8238ed8585" />
+<img width="1127" height="637" alt="image" src="https://github.com/user-attachments/assets/4cd05a57-693a-4a8d-94c9-c186f7a5eb01" />
+<img width="1146" height="783" alt="image" src="https://github.com/user-attachments/assets/0c3c5cf3-544f-44d6-8278-f762ad78d354" />
 
 ---
 
 ## Weather & Destination Visualization
 
-> *(Add AI-generated travel image screenshot)*
+<img width="1130" height="815" alt="image" src="https://github.com/user-attachments/assets/7c589d47-f73c-4b55-b827-8f2396c60e13" />
+
 
 ---
 
