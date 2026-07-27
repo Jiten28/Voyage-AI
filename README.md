@@ -18,11 +18,7 @@
 
 # 🌍 Overview
 
-Voyage-AI is an intelligent travel planning assistant that helps users organize complete trips in seconds using Generative AI.
-
-Instead of manually searching across multiple websites, users simply describe their destination, travel duration, budget, and preferences. Voyage-AI then generates a personalized itinerary with hotel recommendations, estimated expenses, attractions, restaurants, weather information, and AI-generated destination images.
-
-The project was initially developed using **Google AI Studio** during the **Google Build with AI Bootcamp** and has since been enhanced with additional planning and visualization capabilities.
+AI-powered travel planner that generates personalized itineraries, budget breakdowns, hotel recommendations, weather insights, and AI-generated destination visuals using Google Gemini, React, and TypeScript.
 
 ---
 
