@@ -22,6 +22,12 @@ AI-powered travel planner that generates personalized itineraries, budget breakd
 
 ---
 
+# Live Deployment
+
+**URL:** https://voyage-ai-p1bd.onrender.com/
+
+---
+
 # ✨ Features
 
 - 🤖 AI-powered personalized travel itinerary generation
