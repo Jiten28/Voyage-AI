@@ -48,7 +48,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const root = window.document.documentElement;
+    const root = document.documentElement;
     if (darkMode) {
       root.classList.add("dark");
       localStorage.setItem("theme", "dark");
